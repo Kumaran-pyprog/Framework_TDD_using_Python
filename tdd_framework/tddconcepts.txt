@@ -1,0 +1,94 @@
+TDD is a Test Data Driven Framework
+a source code called as a module.
+an individual unit of module is called as unit testing.
+
+Levels of Testing
+UnitTest-Testing at Function levels.Testing the codes before the production code.
+Component Testing-Testing at the library and compiled binary level.
+system Testing-Testing at the external interfaces of system which is collection of subsystem.
+Performence Testing-Testing at subsystem and system levels to verify the timing and resource usages are acceptable.
+
+UnitTest:
+1)Test indivduals Functions
+2)Test should be written for each test case for a function(all positive and negative test cases)
+3)Group of test can be combined into testsuite.
+4)Execute in the developement environment rather than production Environment.
+
+#Example of production code
+def str_len(str):
+     return len(str)
+
+#A Unit Test
+def test_stringlength():
+    teststr="1"           #setup
+    res=str_len(teststr)  #Action
+    assert res==1         #Assert
+
+UnitTest validate test case for indivdual Function.
+UnitTest should build and Ran in the developement Environment.
+UnitTest Ran Fast.
+
+TDD:
+1)A process  where the developer takes personnel responsibility for the quality of their code.
+2)UnitTest are written before the Production code
+
+Benefits:
+1)Give you the confidence to change the code.
+2)Give you immediate feedback
+3)Document what the coding is doing.
+4)Drive Good object oriented design.
+5)TDD is first Unittest Framework.
+
+TDD has Three Phase
+1)Red,Green,Refactor phase.
+2) a)Red phase-Writing a failing UnitTest
+   b)Green phase-Writing the just enough production code to pass the test.
+   c)Refactor Phase-Unit test and Production code to make it clean
+3)Repeat until future is complete.
+
+PyTest:
+1)PyTest is a Python unittesting Framework.
+2)PyTest provides Test,Test module,Test fixture
+
+Fixtures:
+1)Test Fixtures allow us to reuse of setup and teardown code across test.
+2)@pytest.fixture() is a decorator applied to the function.
+3)@pytest.fixture(autouse=True) parameter can be set to True automattically execute the fixture before each test.
+
+Test Fixture can have own optional teardown code which is called after fixture goes out of scope.
+1)yield-yield keyword used the code after yield is executed after fixture goes out of scope.
+@pytest.fixture()
+def setup():
+    print("Executing setup")
+    yield
+    print("Executing teardown")
+2)addfinalizer-with addfinalizer method a teardown method is defined  added via the request-context add finalizer method
+@pytest.fixture()
+def setup(request):
+    print("Executing setup")
+    def teardown:
+        print("Executing teardown")
+    request.addfinalizer(teardown)
+
+Test Fixture can have following scope:
+1)Function-Run the fixture once for each test.
+2)class-Run the fixture once for each class of test.
+3)Module-Run the fixture when module goes in scope.
+4)session-Run the fixture when pytest starts
+
+-k -Module,class,Function names
+-m -Marker Name
+-v -verbosity
+-q -quit mode
+-s -Don't capture console ouput
+--ignore -ignore the specified path when discovering the test.
+--maxfail -stop after the specified number of failure
+
+
+
+
+
+
+
+
+
